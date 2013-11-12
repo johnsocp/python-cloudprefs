@@ -146,11 +146,11 @@ class PrefsHandler(tornado.web.RequestHandler):
 
                     for y in self.roles:
                         for v in y.items():
-                            if v[1] in GET_ROLES:
-                                self.access = 'GET'
-                                return
-                            elif v[1] in POST_ROLES:
+                            if v[1] in POST_ROLES:
                                 self.access = 'POST'
+                                return
+                            elif v[1] in GET_ROLES:
+                                self.access = 'GET'
                                 return    
             logging.info("Access denied")              
             self.set_status(401)
