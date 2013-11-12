@@ -380,9 +380,10 @@ def main():
         print(exc)
         return
 
-    uri = "mongodb://%s:%s@%s" % (DB_USER, 
-                                  DB_PASS, 
-                                  options.mongodb)
+    uri = "mongodb://%s:%s@%s/%s" % (DB_USER, 
+                                     DB_PASS, 
+                                     options.mongodb,
+                                     options.database)
 
     client = motor.MotorClient(uri).open_sync()
     database = client[options.database]
