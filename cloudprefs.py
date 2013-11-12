@@ -381,10 +381,10 @@ def main():
         return
 
     uri = "mongodb://%s:%s@%s/%s" % (DB_USER, 
-                                     DB_PASS, 
+                                     DB_PASS,
                                      options.mongodb,
                                      options.database)
-
+    
     client = motor.MotorClient(uri).open_sync()
     database = client[options.database]
     application = tornado.web.Application([
