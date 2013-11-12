@@ -162,7 +162,8 @@ class PrefsHandler(tornado.web.RequestHandler):
         """Return a document or part of a document for specified entity"""
         if options.url:
             if not self.access:
-                self.set_status(401)
+		reason="User %s does not have access to this action" % self.user_id
+                self.set_status(401, reason=reason)
                 self.finish() 
                 return
 
@@ -222,7 +223,8 @@ class PrefsHandler(tornado.web.RequestHandler):
 
         if options.url:
             if not self.access:
-                self.set_status(401)
+                reason="User %s does not have access to this action" % self.user_id
+                self.set_status(401, reason=reason)
                 self.finish() 
                 return
 
@@ -271,7 +273,8 @@ class PrefsHandler(tornado.web.RequestHandler):
 
         if options.url:
             if not self.access:
-                self.set_status(401)
+                reason="User %s does not have access to this action" % self.user_id
+                self.set_status(401, reason=reason)
                 self.finish() 
                 return
 
