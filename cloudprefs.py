@@ -31,6 +31,8 @@ from tornado.options import define, options
 
 USERNAME = os.environ.get('USERNAME')
 PASSWORD = os.environ.get('PASSWORD')
+DB_USER = os.environ.get('DB_USER')
+DB_PASS = os.environ.get('DB_PASS')
 
 
 GET_ROLES = ['lnx-cbastion', 
@@ -378,7 +380,11 @@ def main():
         print(exc)
         return
 
-    client = motor.MotorClient(options.mongodb).open_sync()
+    uri = "mongodb://%s:%s@%s" % (DB_USER, 
+                                  DB_PASS, 
+                                  options.mongodb)
+
+    client = motor.MotorClient(uri).open_sync()
     database = client[options.database]
     application = tornado.web.Application([
         (r"/(.*?)/(.*)", PrefsHandler, dict(database=database)),
