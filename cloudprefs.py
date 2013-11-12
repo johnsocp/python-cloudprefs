@@ -221,7 +221,7 @@ class PrefsHandler(tornado.web.RequestHandler):
         """Delete a document or part of a document"""
 
         if options.url:
-            if not self.access == 'POST':
+            if not self.access:
                 self.set_status(401)
                 self.finish() 
                 return
@@ -270,7 +270,7 @@ class PrefsHandler(tornado.web.RequestHandler):
         """Create a new document, collection or database"""
 
         if options.url:
-            if not self.access == 'POST':
+            if not self.access:
                 self.set_status(401)
                 self.finish() 
                 return
