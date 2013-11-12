@@ -264,7 +264,7 @@ class PrefsHandler(tornado.web.RequestHandler):
         else:
             # Drop the collection
             yield motor.Op(self.collection.drop)
-
+        logging.info("User: %s request: %s" % (self.user_id, self.request))
         self.set_status(204)
 
     @gen.coroutine
@@ -351,7 +351,7 @@ class PrefsHandler(tornado.web.RequestHandler):
                     return
 
                 yield motor.Op(self.collection.save, document)
-
+            logging.info("User: %s request: %s" % (self.user_id, self.request))
             self.set_status(204)
             return
 
