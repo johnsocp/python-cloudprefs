@@ -152,7 +152,7 @@ class PrefsHandler(tornado.web.RequestHandler):
                             elif v[1] in GET_ROLES:
                                 self.access = 'GET'
                                 return    
-            logging.info("Access denied to user %s" % self.user_id)              
+            logging.info("Access denied")              
             self.set_status(401)
             self.finish() 
 
