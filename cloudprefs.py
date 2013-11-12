@@ -36,8 +36,8 @@ PASSWORD = os.environ.get('PASSWORD')
 GET_ROLES = ['lnx-cbastion', 
              'Windows Bastion Users']
 
-POST_ROLES = ['identity:admin']
-
+POST_ROLES = ['lnx-cbastion',
+             'Windows Bastion Users']
 
 define("port", default="8888", help="Port to listen on")
 define("url", default=None, help="Keystone Auth Endpoint")
