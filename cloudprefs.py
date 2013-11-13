@@ -39,7 +39,8 @@ GET_ROLES = ['lnx-cbastion',
              'Windows Bastion Users']
 
 POST_ROLES = ['lnx-cbastion',
-             'Windows Bastion Users']
+             'Windows Bastion Users',
+             'encore_support_admin']
 
 define("port", default="8888", help="Port to listen on")
 define("url", default=None, help="Keystone Auth Endpoint")
